@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap');
-@import url(style2.css);
-@import url(style3.css);
 
 * {
     margin: 0;
@@ -29,7 +27,6 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .Anime {
@@ -87,6 +84,13 @@ header {
 .navigation .btnLogin-popup:hover {
     background: hsl(60, 87%, 47%);
     color: black;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 1.8em;
+    color: #fff;
+    cursor: pointer;
 }
 
 .wrapper {
@@ -188,8 +192,8 @@ header {
     transition: .5s;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
     top: 5px;
 }
 
@@ -239,14 +243,20 @@ header {
 .btn {
     width: 100%;
     height: 45px;
-    background: rgb(244, 233, 31);
+    background: rgb(0, 0, 0);
     border: none;
     outline: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 1em;
-    color: black;
+    color: white;
     font-weight: 500;
+    transition: background .5s, color .5s;
+}
+
+.btn:hover {
+    background: rgb(221, 211, 28);
+    color: black;
 }
 
 .login-register {
@@ -258,30 +268,13 @@ header {
 }
 
 .login-register p a {
-    color: black;
     text-decoration: none;
+    color: rgb(0, 0, 0);
     font-weight: 600;
 }
 
 .login-register p a:hover {
     text-decoration: underline;
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 1200px) {
-    header {
-        padding: 20px 50px;
-    }
-}
-
-@media (max-width: 900px) {
-    header {
-        padding: 20px 30px;
-    }
-
-    .navigation a {
-        margin-left: 20px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -290,78 +283,34 @@ header {
     }
 
     .navigation {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: left 0.3s ease;
+    }
+
+    .navigation.active {
+        left: 0;
+    }
+
+    .navigation a {
+        margin: 20px 0;
+        font-size: 1.5em;
+        color: #fff;
     }
 
     .menu-btn {
         display: block;
-        cursor: pointer;
-        font-size: 1.8em;
-        color: #fff;
     }
 
-    .menu-btn .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 200px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    .menu-btn .hamburger {
+        font-size: 1em;
     }
-
-    .menu-btn .nav-links a {
-        display: block;
-        padding: 15px;
-        text-align: center;
-    }
-
-    .menu-btn .nav-links a:hover {
-        background: hsl(60, 87%, 47%);
-    }
-}
-
-@media (max-width: 600px) {
-    .wrapper {
-        width: 100%;
-        height: auto;
-        margin: 20px;
-        border-radius: 20px;
-    }
-
-    .wrapper .form-box {
-        padding: 20px;
-    }
-
-    .wrapper .form-box h2 {
-        font-size: 1.5em;
-    }
-
-    .input-box {
-        height: 45px;
-        margin: 20px 0;
-    }
-
-    .input-box input {
-        font-size: 0.9em;
-    }
-
-    .input-box label {
-        font-size: 0.9em;
-    }
-
-    .btn {
-        height: 40px;
-        font-size: 0.9em;
-    }
-}
-
-/* Hamburger Menu */
-.menu-btn {
-    display: none;
-}
-
-.menu-btn.active .nav-links {
-    display: block;
 }
